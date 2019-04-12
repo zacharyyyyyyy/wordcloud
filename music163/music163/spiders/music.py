@@ -14,7 +14,7 @@ class MusicSpider(scrapy.Spider):
         "Referer": "http://music.163.com",
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3067.6 Safari/537.36",
     }
-    maxPage=300
+    maxPage=1000
     offset=0
     maxOffset = maxPage *10
 

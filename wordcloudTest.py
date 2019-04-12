@@ -21,25 +21,22 @@ data=cursor.fetchall()
 connect.close()
 cursor.close()
 
-for i in range(0,len(data)):
-
-
-file=open('test.txt').read()
-
-image=ndimage.imread('xin.jpg')  # 解析该图片
+image=ndimage.imread('shu.jpg')  # 解析该图片
 
 wc=WordCloud(
      mode='RGBA',#设置透明底色
      background_color=None,
      mask=image, #词云形状设置为背景图像
-     max_words=100,#显示的词的最大个数
+     max_words=500,#显示的词的最大个数
      font_path="C:\\Windows\\Fonts\\simfang.ttf",#设置字体，否则中文可能会出现乱码
-     scale=3#扩大三倍
+     scale=5,#扩大三倍
+     collocations=False, #去除重复词
+     random_state=10   #配色数
  )
 
  #生成词云
 image_colors = ImageColorGenerator(image)# 基于背景颜色设置字体色彩
-wc.generate(file)#根据文本生成词云
+wc.generate(data.__str__())#根据文本生成词云
 
 
 plt.imshow(wc)#显示词云图
